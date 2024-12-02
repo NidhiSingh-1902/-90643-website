@@ -53,3 +53,18 @@ function addToCart(title, description) {
     // Redirect to the Add to Cart page
     window.location.href = 'add-to-cart.html';
 }
+
+// Add to cart function
+function addToCart(title, description, price) {
+    // Retrieve the existing cart items from localStorage
+    const cart = JSON.parse(localStorage.getItem("cartItems")) || [];
+
+    // Add the new item to the cart
+    cart.push({ title, description, price });
+
+    // Save the updated cart back to localStorage
+    localStorage.setItem("cartItems", JSON.stringify(cart));
+
+    // Redirect to Add to Cart page
+    window.location.href = "add-to-cart.html";
+}

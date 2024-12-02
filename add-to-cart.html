@@ -4,74 +4,53 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Add to Cart</title>
-    <link rel="stylesheet" href = "styles.css">
-    <script>
-        window.onload = function() {
-            var urlParams = new URLSearchParams(window.location.search);
-            var productName= urlParams.get('product-name'); // Retrieve the 'price' parameter
-
-            // Display the price on the page
-            if (productName) {
-                document.getElementById('product-name').innerText = productName;
-            }
-            // Get the query parameter 'price' from the URL
-            var urlParams = new URLSearchParams(window.location.search);
-            var jacketPrice = urlParams.get('price'); // Retrieve the 'price' parameter
-
-            // Display the price on the page
-            if (jacketPrice) {
-                document.getElementById('cart-price').innerText = jacketPrice;
-            }
-        };
-    </script>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <h1>Your Cart</h1>
-    <div>
-        <p>Product Name: <span id="product-name">Not available</span></p> <!-- This will display the fetched product name -->
-        <p>Price: <span id="cart-price">Not available</span></p> <!-- This will display the fetched price -->
-    </div>
+
+    <table id="cartTable" border="1">
+        <thead>
+            <tr>
+                <th>Product Name</th>
+                <th>Description</th>
+                <th>Price</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Rows will be dynamically added here -->
+        </tbody>
+    </table>
+
+    <script>
+        // Function to display cart items
+        function displayCartItems() {
+            // Retrieve cart items from localStorage
+            const cart = JSON.parse(localStorage.getItem("cartItems")) || [];
+            
+            // Get the table body
+            const tableBody = document.querySelector("#cartTable tbody");
+            tableBody.innerHTML = ""; // Clear existing rows
+
+            // Populate table rows with cart items
+            cart.forEach((item) => {
+                const row = document.createElement("tr");
+
+                row.innerHTML = `
+                    <td>${item.title}</td>
+                    <td>${item.description}</td>
+                    <td>${item.price}</td>
+                `;
+                tableBody.appendChild(row);
+            });
+
+            if (cart.length === 0) {
+                tableBody.innerHTML = `<tr><td colspan="3">Your cart is empty</td></tr>`;
+            }
+        }
+
+        // Call the display function when the page loads
+        document.addEventListener("DOMContentLoaded", displayCartItems);
+    </script>
 </body>
-<footer class="footer">
-    <div class="footer-container">
-        <div class="footer-column">
-            <h4>Customer Support</h4>
-            <ul>
-                <li><a href="#">Contact Us</a></li>
-                <li><a href="#">FAQs</a></li>
-                <li><a href="#">Track Order</a></li>
-                <li><a href="#">Returns</a></li>
-            </ul>
-        </div>
-        <div class="footer-column">
-            <h4>About Us</h4>
-            <ul>
-                <li><a href="#">Our Story</a></li>
-                <li><a href="#">Careers</a></li>
-                <li><a href="#">Press</a></li>
-            </ul>
-        </div>
-        <div class="footer-column">
-            <h4>Quick Links</h4>
-            <ul>
-                <li><a href="#">Gift Cards</a></li>
-                <li><a href="#">Coupons</a></li>
-                <li><a href="#">Privacy Policy</a></li>
-                <li><a href="#">Terms & Conditions</a></li>
-            </ul>
-        </div>
-        <div class="footer-column">
-            <h4>Connect With Us</h4>
-            <ul class="social-links">
-                <li><a href="#"><img src="facebook-icon.png" alt="Facebook"></a></li>
-                <li><a href="#"><img src="instagram-icon.png" alt="Instagram"></a></li>
-                <li><a href="#"><img src="twitter-icon.png" alt="Twitter"></a></li>
-                <li><a href="#"><img src="youtube-icon.png" alt="YouTube"></a></li>
-            </ul>
-        </div>
-    </div>
-    <div class="footer-bottom">
-        <p>&copy; 2024 Evolution Task. All rights reserved.</p>
-    </div>
-</footer>
 </html>
