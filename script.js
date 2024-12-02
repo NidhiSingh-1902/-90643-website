@@ -8,9 +8,15 @@ document.addEventListener("DOMContentLoaded", () => {
         // Redirect to the page based on search query
         if (query === "mens") {
             window.location.href = "mens.html";
-        } else if (query === "women") {
+        } else if (query === "womens") {
             window.location.href = "women.html";
-        } 
+        } else if(query === "kids"){
+            window.location.href = "kids.html";
+        }else if(query === "beauty"){
+            window.location.href = "beauty.html";
+        } else if(query === "accessories"){
+            window.location.href = "accessories.html";
+        }
         else {
             alert("Category is not available yet.");
         }

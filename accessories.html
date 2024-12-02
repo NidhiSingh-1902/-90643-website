@@ -3,35 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Add to Cart</title>
+    <title>Document</title>
     <link rel="stylesheet" href = "styles.css">
-    <script>
-        window.onload = function() {
-            var urlParams = new URLSearchParams(window.location.search);
-            var productName= urlParams.get('product-name'); // Retrieve the 'price' parameter
-
-            // Display the price on the page
-            if (productName) {
-                document.getElementById('product-name').innerText = productName;
-            }
-            // Get the query parameter 'price' from the URL
-            var urlParams = new URLSearchParams(window.location.search);
-            var jacketPrice = urlParams.get('price'); // Retrieve the 'price' parameter
-
-            // Display the price on the page
-            if (jacketPrice) {
-                document.getElementById('cart-price').innerText = jacketPrice;
-            }
-        };
-    </script>
 </head>
 <body>
-    <h1>Your Cart</h1>
-    <div>
-        <p>Product Name: <span id="product-name">Not available</span></p> <!-- This will display the fetched product name -->
-        <p>Price: <span id="cart-price">Not available</span></p> <!-- This will display the fetched price -->
-    </div>
+    <h1>Accessories</h1>
+    <nav class="navbar">
+        <ul class="nav-list">
+            <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+            <li class="nav-item"><a href="#" class="nav-link">Men's</a></li>
+            <li class="nav-item"><a href="#" class="nav-link">Women’s</a></li>
+            <li class="nav-item"><a href="#" class="nav-link">Contact</a></li>
+        </ul>
+    </nav>
 </body>
+<h1>Breaker</h1>
 <footer class="footer">
     <div class="footer-container">
         <div class="footer-column">
