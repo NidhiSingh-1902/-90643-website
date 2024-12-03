@@ -22,6 +22,22 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 });
 
+// Add sorting functionality for product names
+document.getElementById("sortProductName")?.addEventListener("click", () => {
+    const table = document.getElementById("cartTable");
+    const rows = Array.from(table.querySelectorAll("tbody tr"));
+
+    // Sort rows by product name (case-insensitive)
+    rows.sort((rowA, rowB) => {
+        const nameA = rowA.cells[0].textContent.trim().toLowerCase();
+        const nameB = rowB.cells[0].textContent.trim().toLowerCase();
+        return nameA.localeCompare(nameB);
+    });
+
+    // Append sorted rows back to the table
+    rows.forEach(row => table.querySelector("tbody").appendChild(row));
+});
+
 // Carousel
 let currentSlide = 0;
 const slides = document.querySelectorAll(".carousel-slide");

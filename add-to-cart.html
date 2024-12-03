@@ -8,23 +8,13 @@
 </head>
 <body>
     <h1>Your Cart</h1>
-    <button type="button" class="btn btn-primary" id = "clearCartButton">Empty Cart</button>
+    <button type="button" class="btn btn-primary" id="clearCartButton">Empty Cart</button>
     
-    <!-- Dropdown to select number of items to display -->
-    <!-- <div>
-        <label for="itemsPerPage">Items per page: </label>
-        <select id="itemsPerPage">
-            <option value="5">5</option>
-            <option value="10">10</option>
-            <option value="15">15</option>
-            <option value="20">20</option>
-        </select>
-    </div> -->
-
     <table id="cartTable" border="1">
         <thead>
             <tr>
-                <th>Product Name</th>
+                <!-- Added sort button to Product Name header -->
+                <th id="sortProductName" style="cursor: pointer;">Product Name</th>
                 <th>Description</th>
                 <th>Price</th>
                 <th>Action</th>
@@ -35,11 +25,10 @@
         </tbody>
     </table>
 
-    <!-- Total Price Section -->
     <div id="totalPriceContainer">
         <h3>Total Price: <span id="totalPrice">Rs. 0</span></h3>
     </div>
-   
+
     <footer class="footer">
         <div class="footer-container">
             <div class="footer-column">
@@ -83,6 +72,8 @@
     </footer>
     
     <script src="script.js"></script>
+
 </body>
+
 
 </html>
