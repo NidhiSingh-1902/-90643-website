@@ -1,11 +1,23 @@
+/**
+ * DOMContentLoaded :- Ensures that the HTML document is loaded and 
+ * parsed successfully.
+ */
 document.addEventListener("DOMContentLoaded", () => {
+    /**
+    * Fetching the search button and input value.
+    */
     const searchButton = document.getElementById("searchButton");
     const searchInput = document.getElementById("searchInput");
 
+    /**
+     * Adding a click event on searchButton.
+     */
     searchButton.addEventListener("click", () => {
         const query = searchInput.value.toLowerCase().trim();
 
-        // Redirect to the page based on searched query
+        /**
+         * Redirects to the specified page.
+         */
         if (query === "mens") {
             window.location.href = "mens.html";
         } else if (query === "womens") {
@@ -22,23 +34,31 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 });
 
-// Add sorting functionality for product names
+/**
+ * Adds sorting functionality for the product names.
+ */
 document.getElementById("sortProductName")?.addEventListener("click", () => {
     const table = document.getElementById("cartTable");
     const rows = Array.from(table.querySelectorAll("tbody tr"));
 
-    // Sort rows by product name (case-insensitive)
+    /**
+     *  Sorts the rows by product name.
+     */
     rows.sort((rowA, rowB) => {
         const nameA = rowA.cells[0].textContent.trim().toLowerCase();
         const nameB = rowB.cells[0].textContent.trim().toLowerCase();
         return nameA.localeCompare(nameB);
     });
 
-    // Append sorted rows back to the table
+    /**
+     * Append sorted rows back to the table.
+     */
     rows.forEach(row => table.querySelector("tbody").appendChild(row));
 });
 
-// Carousel
+/**
+ * Adding Carousel.
+ */
 let currentSlide = 0;
 const slides = document.querySelectorAll(".carousel-slide");
 
@@ -49,67 +69,98 @@ function showSlide(index) {
     });
 }
 
+/**
+ * Sets the timer for the Carousel slides.
+ */
 function startCarousel() {
     setInterval(() => {
         currentSlide = (currentSlide + 1) % slides.length;
         showSlide(currentSlide);
-    }, 3000); // Change slide every 3 seconds
+    }, 3000);
 }
 
-// Initialize the carousel
+/**
+ * Initialize the carousel.
+ */
 showSlide(currentSlide);
 startCarousel();
 
 document.addEventListener("DOMContentLoaded", () => {
-    // Handle Add to Cart functionality
+    /**
+     * Handles Add to Cart functionality.
+     */
     const addToCartButtons = document.querySelectorAll(".add-to-cart");
 
     addToCartButtons.forEach((button) => {
         button.addEventListener("click", (event) => {
             const card = event.target.closest(".card");
 
-            // Extract product details dynamically
+            /**
+             * Extract product details dynamically.
+             */
             const title = card.dataset.title;
             const description = card.dataset.description;
             const price = card.dataset.price;
 
-            // Add to cart
+            /**
+             * Add to cart.
+             */
             addToCart(title, description, price);
         });
     });
 
-    // Add to cart function
+    /**
+     * 
+     * @param {*} title 
+     * @param {*} description 
+     * @param {*} price 
+     */
     function addToCart(title, description, price) {
-        // Retrieve existing cart items from localStorage
+        /**
+         * Retrieve existing cart items from localStorage.
+         */
         const cart = JSON.parse(localStorage.getItem("cartItems")) || [];
 
-        // Add the new item to the cart
+        /**
+         * Add the new item to the cart.
+         */
         cart.push({ title, description, price });
 
-        // Save the updated cart back to localStorage
+        /**
+         * Save the updated cart back to localStorage.
+         */
         localStorage.setItem("cartItems", JSON.stringify(cart));
 
-        // Redirect to Add to Cart page
+        /**
+         * Redirect to Add to Cart page.
+         */
         window.location.href = "add-to-cart.html";
     }
 });
 
-// Function to display cart items and total price
+/**
+ * Function to display cart items and total price.
+ */
 function displayCartItems() {
-    // Retrieve cart items from localStorage
+    /**
+     * Retrieve cart items from localStorage.
+     */
     const cart = JSON.parse(localStorage.getItem("cartItems")) || [];
-    
-    // Get the table body
-    const tableBody = document.querySelector("#cartTable tbody");
-    tableBody.innerHTML = ""; // Clear existing rows
-    
-    let totalPrice = 0; // Initialize totalPrice variable
 
-    // Populate table rows with cart items
+    /**
+     * Get the table body.
+     */
+    const tableBody = document.querySelector("#cartTable tbody");
+    tableBody.innerHTML = "";
+
+    let totalPrice = 0;
+
+    /**
+     * Populate table rows with cart items.
+     */
     cart.forEach((item, index) => {
         const row = document.createElement("tr");
-        const price = parseFloat(item.price); // Convert price to float
-        // document.write("Nidhi's --  --- Nidhi's" + )
+        const price = parseFloat(item.price);
         if (isNaN(price)) {
             console.error("Invalid price value:", item.price);
         }
@@ -121,50 +172,61 @@ function displayCartItems() {
             <td><button onclick="deleteItem(${index})">Delete</button></td>
         `;
         tableBody.appendChild(row);
-        totalPrice += price; // Add the price of the item to the total
+        totalPrice += price;
     });
 
-    // Update the total price in the UI
+    /**
+     * Update the total price in the UI.
+     */
     const totalPriceElement = document.getElementById("totalPrice");
     if (totalPriceElement) {
-        totalPriceElement.innerText = `Rs. ${totalPrice.toFixed(2)}`; // Display total price
+        totalPriceElement.innerText = `Rs. ${totalPrice.toFixed(2)}`;
     } else {
         console.error("Element with id='totalPrice' not found.");
     }
 
-    // Handle empty cart case
+    /**
+     * Handle empty cart case.
+     */
     if (cart.length === 0) {
         tableBody.innerHTML = `<tr><td colspan="4">Your cart is empty</td></tr>`;
-        totalPrice = 0; // Ensure total is 0 if cart is empty
+        totalPrice = 0;
     }
 }
 
-// Function to delete an item from the cart
+/**
+ * @param { Function to delete an item from the cart} index 
+ */
 function deleteItem(index) {
-    // Retrieve cart items from localStorage
+    /**
+     * Retrieve cart items from localStorage.
+     */
     const cart = JSON.parse(localStorage.getItem("cartItems")) || [];
 
-    // Remove the selected item
+    /**
+     * Remove the selected item.
+     */
     cart.splice(index, 1);
 
-    // Update localStorage
+    /**
+     * Update localStorage.
+     */
     localStorage.setItem("cartItems", JSON.stringify(cart));
-
-    // Refresh the table
     displayCartItems();
 }
 
 function clearCart() {
-    localStorage.removeItem("cartItems"); // Remove all cart items from localStorage
-    displayCartItems(); // Refresh the cart display
-    alert("Your cart has been cleared!"); // Provide user feedback
+    localStorage.removeItem("cartItems");
+    displayCartItems();
+    alert("Your cart has been cleared!");
 }
 
-// Event listener for Clear Cart button
+/**
+ * Event listener for Clear Cart button.
+ */
 document.addEventListener("DOMContentLoaded", () => {
     const clearCartButton = document.getElementById("clearCartButton");
-    clearCartButton?.addEventListener("click", clearCart); // Attach event listener to Clear Cart button
+    clearCartButton?.addEventListener("click", clearCart); n
 });
 
-// Call the display function when the page loads
 document.addEventListener("DOMContentLoaded", displayCartItems);
