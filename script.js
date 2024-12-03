@@ -43,28 +43,36 @@ function startCarousel() {
 showSlide(currentSlide);
 startCarousel();
 
-function addToCart(title, description) {
-    // Create a cart object
-    const cartItem = { title, description };
-    
-    // Save to localStorage
-    localStorage.setItem('cartItem', JSON.stringify(cartItem));
-    
-    // Redirect to the Add to Cart page
-    window.location.href = 'add-to-cart.html';
-}
+document.addEventListener("DOMContentLoaded", () => {
+    // Handle Add to Cart functionality
+    const addToCartButtons = document.querySelectorAll(".add-to-cart");
 
-// Add to cart function
-function addToCart(title, description, price) {
-    // Retrieve the existing cart items from localStorage
-    const cart = JSON.parse(localStorage.getItem("cartItems")) || [];
+    addToCartButtons.forEach((button) => {
+        button.addEventListener("click", (event) => {
+            const card = event.target.closest(".card");
 
-    // Add the new item to the cart
-    cart.push({ title, description, price });
+            // Extract product details dynamically
+            const title = card.dataset.title;
+            const description = card.dataset.description;
+            const price = card.dataset.price;
 
-    // Save the updated cart back to localStorage
-    localStorage.setItem("cartItems", JSON.stringify(cart));
+            // Add to cart
+            addToCart(title, description, price);
+        });
+    });
 
-    // Redirect to Add to Cart page
-    window.location.href = "add-to-cart.html";
-}
+    // Add to cart function
+    function addToCart(title, description, price) {
+        // Retrieve existing cart items from localStorage
+        const cart = JSON.parse(localStorage.getItem("cartItems")) || [];
+
+        // Add the new item to the cart
+        cart.push({ title, description, price });
+
+        // Save the updated cart back to localStorage
+        localStorage.setItem("cartItems", JSON.stringify(cart));
+
+        // Redirect to Add to Cart page
+        window.location.href = "add-to-cart.html";
+    }
+});

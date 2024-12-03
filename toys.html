@@ -5,22 +5,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Toys</title>
     <link rel="stylesheet" href="styles.css">
-    <script src="script.js"></script>
+    <script src="script.js" defer></script>
 </head>
 <body>
     <h1>Kids Toys</h1>
-    <div class="item">
-        <h2>Action Figure</h2>
-        <p>Description: Superhero action figure</p>
-        <p>Price: $20</p>
-        <button onclick="addToCart('Action Figure', 'Superhero action figure', '$20')">Add to Cart</button>
-    </div>
-    <div class="item">
-        <h2>Toy Car</h2>
-        <p>Description: Remote-controlled car</p>
-        <p>Price: $30</p>
-        <button onclick="addToCart('Toy Car', 'Remote-controlled car', '$30')">Add to Cart</button>
+    <div class="card-container">
+        <div class="card" data-title="Action Figure" data-description="Superhero action figure" data-price="$20">
+            <h2>Action Figure</h2>
+            <p class="description">Superhero action figure</p>
+            <p class="price">$20</p>
+            <button class="add-to-cart">Add to Cart</button>
+        </div>
+        <div class="card" data-title="Toy Car" data-description="Remote-controlled car" data-price="$30">
+            <h2>Toy Car</h2>
+            <p class="description">Remote-controlled car</p>
+            <p class="price">$30</p>
+            <button class="add-to-cart">Add to Cart</button>
+        </div>
     </div>
 </body>
 </html>
-
