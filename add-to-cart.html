@@ -23,51 +23,6 @@
         </tbody>
     </table>
 
-    <script>
-        // Function to display cart items
-        function displayCartItems() {
-            // Retrieve cart items from localStorage
-            const cart = JSON.parse(localStorage.getItem("cartItems")) || [];
-            
-            // Get the table body
-            const tableBody = document.querySelector("#cartTable tbody");
-            tableBody.innerHTML = ""; // Clear existing rows
-
-            // Populate table rows with cart items
-            cart.forEach((item, index) => {
-                const row = document.createElement("tr");
-
-                row.innerHTML = `
-                    <td>${item.title}</td>
-                    <td>${item.description}</td>
-                    <td>${item.price}</td>
-                    <td><button onclick="deleteItem(${index})">Delete</button></td>
-                `;
-                tableBody.appendChild(row);
-            });
-
-            if (cart.length === 0) {
-                tableBody.innerHTML = `<tr><td colspan="4">Your cart is empty</td></tr>`;
-            }
-        }
-
-        // Function to delete an item from the cart
-        function deleteItem(index) {
-            // Retrieve cart items from localStorage
-            const cart = JSON.parse(localStorage.getItem("cartItems")) || [];
-            
-            // Remove the selected item
-            cart.splice(index, 1);
-
-            // Update localStorage
-            localStorage.setItem("cartItems", JSON.stringify(cart));
-
-            // Refresh the table
-            displayCartItems();
-        }
-
-        // Call the display function when the page loads
-        document.addEventListener("DOMContentLoaded", displayCartItems);
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>

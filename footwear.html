@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Footwears Collection</title>
     <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
     <nav class="navbar">
         <ul class="nav-list">
@@ -15,45 +17,47 @@
             <li class="nav-item"><a href="kids.html" class="nav-link">Kid's</a></li>
             <li class="nav-item"><a href="beauty.html" class="nav-link">Beauty</a></li>
             <li class="nav-item"><a href="accessories.html" class="nav-link">Accessories</a></li>
-
-            
         </ul>
     </nav>
-   
+
     <div class="card-container">
-        <div class="card" style="width: 18rem;">
-            <img src="footwear-images/image1.webp" class="card-img-top" alt="...">
+        <div class="card" style="width: 18rem;" data-title="Shoes 1" data-description="Stylish men's Shoes." data-price="Rs. 2999">
+            <img src="footwear-images/image1.webp" class="card-img-top" alt="Shoes">
             <div class="card-body">
                 <h5 class="card-title">Shoes</h5>
                 <p class="card-text">Stylish men's Shoes.</p>
-                <a href="add-to-cart.html" class="btn btn-primary">Add To Cart</a>
+                <button class="btn btn-primary add-to-cart">Add To Cart</button>
             </div>
         </div>
-        <div class="card" style="width: 18rem;">
-            <img src="footwear-images/image2.webp" class="card-img-top" alt="...">
+        
+        <div class="card" style="width: 18rem;" data-title="Women Sandels" data-description="Comfortable shoes for men" data-price="Rs. 2599">
+            <img src="footwear-images/image2.webp" class="card-img-top" alt="Shoes">
             <div class="card-body">
-                <h5 class="card-title">Shoes</h5>
-                <p class="card-text">Stylish men's Shoes.</p>
-                <a href="add-to-cart.html" class="btn btn-primary">Add To Cart</a>
+                <h5 class="card-title">Women Sandels</h5>
+                <p class="card-text">Comfortable sandels for women.</p>
+                <button class="btn btn-primary add-to-cart">Add To Cart</button>
             </div>
         </div>
-        <div class="card" style="width: 18rem;">
-            <img src="footwear-images/image3.webp" class="card-img-top" alt="...">
+
+        <div class="card" style="width: 18rem;" data-title="Women Jutis" data-description="Premium leather shoes for men" data-price="Rs. 3999">
+            <img src="footwear-images/image3.webp" class="card-img-top" alt="Shoes">
             <div class="card-body">
-                <h5 class="card-title">Shoes</h5>
-                <p class="card-text">Stylish men's Shoes.</p>
-                <a href="add-to-cart.html" class="btn btn-primary">Add To Cart</a>
+                <h5 class="card-title">Jutis</h5>
+                <p class="card-text">Premium jutis for women.</p>
+                <button class="btn btn-primary add-to-cart">Add To Cart</button>
             </div>
         </div>
-        <div class="card" style="width: 18rem;">
-            <img src="footwear-images/image4.webp" class="card-img-top" alt="...">
+
+        <div class="card" style="width: 18rem;" data-title="Mens Slipper" data-description="Trendy shoes for all occasions" data-price="Rs. 3499">
+            <img src="footwear-images/image4.webp" class="card-img-top" alt="Shoes">
             <div class="card-body">
-                <h5 class="card-title">Shoes</h5>
-                <p class="card-text">Stylish men's Shoes.</p>
-                <a href="add-to-cart.html" class="btn btn-primary">Add To Cart</a>
+                <h5 class="card-title">Slipper</h5>
+                <p class="card-text">Trendy mens slipper for all occasions.</p>
+                <button class="btn btn-primary add-to-cart">Add To Cart</button>
             </div>
         </div>
     </div>
+
     <footer class="footer">
         <div class="footer-container">
             <div class="footer-column">
@@ -96,7 +100,7 @@
             <p>&copy; 2024 Evolution Task. All rights reserved.</p>
         </div>
     </footer>
-    
-    
+<script src="script.js"></script>
 </body>
+
 </html>
