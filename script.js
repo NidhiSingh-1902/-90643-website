@@ -37,7 +37,7 @@ function startCarousel() {
     setInterval(() => {
         currentSlide = (currentSlide + 1) % slides.length;
         showSlide(currentSlide);
-    }, 4000); // Change slide every 3 seconds
+    }, 3000); // Change slide every 3 seconds
 }
 
 // Initialize the carousel
@@ -78,17 +78,25 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 });
 
+// Function to display cart items and total price
 function displayCartItems() {
     // Retrieve cart items from localStorage
     const cart = JSON.parse(localStorage.getItem("cartItems")) || [];
-
+    
     // Get the table body
     const tableBody = document.querySelector("#cartTable tbody");
     tableBody.innerHTML = ""; // Clear existing rows
+    
+    let totalPrice = 0; // Initialize totalPrice variable
 
     // Populate table rows with cart items
     cart.forEach((item, index) => {
         const row = document.createElement("tr");
+        const price = parseFloat(item.price); // Convert price to float
+        // document.write("Nidhi's --  --- Nidhi's" + )
+        if (isNaN(price)) {
+            console.error("Invalid price value:", item.price);
+        }
 
         row.innerHTML = `
             <td>${item.title}</td>
@@ -97,10 +105,21 @@ function displayCartItems() {
             <td><button onclick="deleteItem(${index})">Delete</button></td>
         `;
         tableBody.appendChild(row);
+        totalPrice += price; // Add the price of the item to the total
     });
 
+    // Update the total price in the UI
+    const totalPriceElement = document.getElementById("totalPrice");
+    if (totalPriceElement) {
+        totalPriceElement.innerText = `Rs. ${totalPrice.toFixed(2)}`; // Display total price
+    } else {
+        console.error("Element with id='totalPrice' not found.");
+    }
+
+    // Handle empty cart case
     if (cart.length === 0) {
         tableBody.innerHTML = `<tr><td colspan="4">Your cart is empty</td></tr>`;
+        totalPrice = 0; // Ensure total is 0 if cart is empty
     }
 }
 
@@ -118,6 +137,18 @@ function deleteItem(index) {
     // Refresh the table
     displayCartItems();
 }
+
+function clearCart() {
+    localStorage.removeItem("cartItems"); // Remove all cart items from localStorage
+    displayCartItems(); // Refresh the cart display
+    alert("Your cart has been cleared!"); // Provide user feedback
+}
+
+// Event listener for Clear Cart button
+document.addEventListener("DOMContentLoaded", () => {
+    const clearCartButton = document.getElementById("clearCartButton");
+    clearCartButton?.addEventListener("click", clearCart); // Attach event listener to Clear Cart button
+});
 
 // Call the display function when the page loads
 document.addEventListener("DOMContentLoaded", displayCartItems);
