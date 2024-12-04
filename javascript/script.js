@@ -1,3 +1,7 @@
+/**
+* DOMContentLoader :- Ensures that the HTML document is loaded
+* and parsed successfully.
+*/
 document.addEventListener("DOMContentLoaded", () => {
     /**
      * Fetching the search button and input value.
@@ -99,7 +103,7 @@ document.addEventListener("DOMContentLoaded", () => {
             const price = card.dataset.price;
 
             /**
-             * Add to cart.
+             * Calling addToCart function.
              */
             addToCart(title, description, price);
         });
@@ -170,16 +174,6 @@ function displayCartItems() {
     });
 
     /**
-     * Update the total price in the UI.
-     */
-    const totalPriceElement = document.getElementById("totalPrice");
-    if (totalPriceElement) {
-        totalPriceElement.innerText = `Rs. ${totalPrice.toFixed(2)}`;
-    } else {
-        console.error("Element with id='totalPrice' not found.");
-    }
-
-    /**
      * Handle empty cart case.
      */
     if (cart.length === 0) {
@@ -211,12 +205,11 @@ function openPaymentForm(index) {
         return;
     }
 
-    // Display the payment form
+    /**
+     * Display the payment form.
+     */
     const paymentFormContainer = document.getElementById("paymentFormContainer");
     paymentFormContainer.style.display = "block";
-
-    // Optionally, pre-fill any information
-    console.log(`Preparing payment for: ${item.title}, Rs. ${item.price}`);
 }
 
 /**
@@ -226,21 +219,60 @@ const paymentForm = document.getElementById("paymentForm");
 paymentForm.addEventListener("submit", (event) => {
     event.preventDefault();
 
-    // Hide the payment form after submission
+    /**
+     * Retrieve the index from the form.
+     */
+    const index = paymentForm.dataset.index;
+
+    /**
+     * Hide the payment form after submission.
+     */
     const paymentFormContainer = document.getElementById("paymentFormContainer");
     paymentFormContainer.style.display = "none";
 
-    // Show a confirmation alert
+    /**
+     * Show a confirmation alert.
+     */
     alert("Payment submitted successfully!");
 
-    // Clear the form
+    /**
+     * Remove the item from the cart after payment.
+     */
+    removeItemFromCart(index);
+
+    /**
+     * Clear the form.
+     */
     paymentForm.reset();
 });
 
-displayCartItems();
+/**
+ * Function to remove an item from the cart after payment.
+ */
+function removeItemFromCart(index) {
+    /**
+     * Retrieve cart items from localStorage.
+     */
+    const cart = JSON.parse(localStorage.getItem("cartItems")) || [];
+
+    /**
+     * Remove the selected item.
+     */
+    cart.splice(index, 1);
+
+    /**
+     * Update localStorage.
+     */
+    localStorage.setItem("cartItems", JSON.stringify(cart));
+
+    /**
+     * Refresh the cart display.
+     */
+    displayCartItems();
+}
 
 /**
- * Function to delete an item from the cart
+ * Function to delete an item from the cart.
  */
 function deleteItem(index) {
     /**

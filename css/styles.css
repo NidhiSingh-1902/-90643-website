@@ -1,4 +1,6 @@
-/* Basic styling for the navigation */
+/**
+* Basic styling for the navigation. 
+*/
 body {
     font-family: Arial, sans-serif;
     margin: 0;
@@ -30,7 +32,9 @@ body {
     display: block;
 }
 
-/* Dropdown menu styling */
+/**
+*  Dropdown menu styling.
+*/
 .dropdown-menu {
     display: none;
     position: absolute;
@@ -41,12 +45,6 @@ body {
     border-radius: 4px;
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
     z-index: 1000;
-}
-
-.dropdown-menu ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
 }
 
 .dropdown-menu ul li a {
@@ -61,7 +59,9 @@ body {
     background-color: #555;
 }
 
-/* Hover effect to display the dropdown menu */
+/**
+* Hover effect to display the dropdown menu. 
+*/
 .nav-item:hover .dropdown-menu {
     display: block;
 }
@@ -70,11 +70,12 @@ body {
     background-color: #555;
 }
 
-/* Search bar styling */
+/**
+* Search bar styling.
+*/
 .search-bar {
     margin-left: auto;
     display: flex;
-    align-items: center;
     gap: 5px;
 }
 
@@ -92,24 +93,26 @@ body {
     padding: 5px 10px;
     cursor: pointer;
     border-radius: 4px;
-    transition: background-color 0.3s;
 }
 
 .search-bar button:hover {
     background-color: #666;
 }
 
-
-/* Card container styling */
+/**
+* Card container styling.
+*/
 .card-container {
     display: flex;
-    justify-content:space-around;
+    justify-content: center;
+    gap: 15px;
     flex-wrap: wrap;
-    gap: 0;
-    padding: 5px;
+    padding: 20px;
 }
 
-/* Individual card styling */
+/**
+* Individual card styling. 
+*/
 .card {
     width: 18rem;
     border-radius: 8px;
@@ -147,22 +150,26 @@ body {
     text-decoration: none;
     padding: 10px 15px;
     border-radius: 4px;
-    transition: background-color 0.3s;
 }
 
 .card a.btn:hover {
     background-color: #0056b3;
 }
 
-/* Hover effect on cards */
+/**
+* Hover effect on cards.
+*/
 .card:hover {
     transform: scale(1.05);
 }
-/* Carousel Styling */
+
+/**
+* Carousel Styling.
+*/
 .carousel {
     position: relative;
     max-width: 100%;
-    height: 400px; /* Set height for the carousel */
+    height: 400px;
     margin: 20px auto;
     overflow: hidden;
 }
@@ -201,7 +208,10 @@ body {
 .carousel-slide:not(.active) {
     opacity: 0;
 }
-/* Footer Styling */
+
+/**
+* Footer Styling.
+*/
 .footer {
     background-color: #333;
     color: #fff;
@@ -217,7 +227,6 @@ body {
 
 .footer-column {
     flex: 1 1 200px;
-    min-width: 200px;
 }
 
 .footer-column h4 {
@@ -228,30 +237,14 @@ body {
     color: #ff6f61;
 }
 
-.footer-column ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
-
-.footer-column ul li {
-    margin-bottom: 10px;
-}
-
 .footer-column ul li a {
     color: #ccc;
     text-decoration: none;
     font-size: 14px;
-    transition: color 0.3s;
 }
 
 .footer-column ul li a:hover {
     color: #fff;
-}
-
-.social-links {
-    display: flex;
-    gap: 10px;
 }
 
 .social-links img {
@@ -272,29 +265,19 @@ body {
     font-size: 14px;
     color: #aaa;
 }
-/* Logo Styling */
-.logo {
-    margin-right: auto;
-    padding: 5px 10px;
-}
 
+/**
+* Logo Styling. 
+*/
 .logo img {
-    height: 40px; /* Adjust the height as needed */
+    height: 40px;
     width: auto;
     display: block;
 }
-/* Logo Styling */
-.logo {
-    margin-right: auto;
-    padding: 5px 10px;
-}
 
-.logo img {
-    height: 40px; /* Adjust the height as needed */
-    width: auto;
-    display: block;
-}
-/* Wishlist and Bag Section */
+/**
+* Bag Section.
+*/
 .user-actions {
     display: flex;
     align-items: center;
@@ -306,33 +289,26 @@ body {
     text-decoration: none;
     display: flex;
     align-items: center;
-    color: black; /* Adjust based on your theme */
+    color: black;
     font-size: 14px;
-    transition: color 0.3s ease;
 }
 
 .user-actions a:hover {
-    color: #555; /* Hover effect */
+    color: #555;
 }
 
 .user-actions img {
     height: 24px;
     width: 24px;
-    margin-right: 5px; /* Space between icon and text */
-}
-/* Common Card Container Styling */
-.card-container {
-    display: flex;
-    justify-content: center; /* Center cards horizontally */
-    gap: 15px; /* Reduced space between cards */
-    flex-wrap: wrap; /* Allow wrapping if the screen is too small */
-    padding: 20px;
+    margin-right: 5px;
 }
 
-/* Individual Card Styling */
+/**
+* Category Cards.
+*/
 .category-card {
     position: relative;
-    width: 200px; /* Reduced width of the card */
+    width: 200px;
     transition: transform 0.3s ease;
     overflow: hidden;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -340,16 +316,13 @@ body {
     background-color: #fff;
 }
 
-/* Card Image */
 .category-card .card-img {
     width: 100%;
-    height: 150px; /* Reduced height of the card image */
+    height: 150px;
     border-radius: 8px;
-    display: block;
-    object-fit: cover; /* Ensures the image fits nicely within reduced size */
+    object-fit: cover;
 }
 
-/* Overlay Effect */
 .category-card .card-overlay {
     position: absolute;
     top: 0;
@@ -361,37 +334,28 @@ body {
     align-items: center;
     justify-content: center;
     opacity: 0;
-    border-radius: 8px;
     transition: opacity 0.3s ease;
     color: white;
-    font-size: 16px; /* Reduced overlay text size */
+    font-size: 16px;
     font-weight: bold;
     text-transform: uppercase;
 }
 
 .category-card:hover .card-overlay {
-    opacity: 1; /* Shows overlay text on hover */
+    opacity: 1;
 }
 
-/* Link Styling */
-.card-link {
-    text-decoration: none;
-    color: inherit;
-    display: block;
-}
-
-/* Hover Effect on Cards */
 .category-card:hover {
-    transform: scale(1.05); /* Adds zoom effect */
+    transform: scale(1.05);
 }
 
-/* Card Text */
 .category-card h3 {
     text-align: center;
     font-size: 1.2em;
     margin: 10px 0;
     color: #333;
 }
+
 .add-to-cart {
     display: inline-block;
     padding: 10px 15px;
@@ -402,16 +366,17 @@ body {
     margin-top: 10px;
     text-align: center;
     font-size: 14px;
-    transition: background-color 0.3s ease;
 }
 
 .add-to-cart:hover {
     background-color: #0056b3;
 }
-.off{
+
+.off {
     text-decoration: line-through;
-    color:#B8B8B8;
+    color: #B8B8B8;
 }
+
 table {
     width: 100%;
     border-collapse: collapse;
@@ -430,11 +395,15 @@ th {
 tr:nth-child(even) {
     background-color: #f9f9f9;
 }
+
 .btn-blue {
     background-color: blue;
     color: white;
 }
-/* Media Queries for Responsiveness */
+
+/**
+* Media Queries for Responsiveness.
+*/
 @media screen and (max-width: 768px) {
     .navbar {
         flex-direction: column;
