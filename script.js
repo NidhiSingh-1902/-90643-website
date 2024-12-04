@@ -1,11 +1,7 @@
-/**
- * DOMContentLoaded :- Ensures that the HTML document is loaded and 
- * parsed successfully.
- */
 document.addEventListener("DOMContentLoaded", () => {
     /**
-    * Fetching the search button and input value.
-    */
+     * Fetching the search button and input value.
+     */
     const searchButton = document.getElementById("searchButton");
     const searchInput = document.getElementById("searchInput");
 
@@ -42,7 +38,7 @@ document.getElementById("sortProductName")?.addEventListener("click", () => {
     const rows = Array.from(table.querySelectorAll("tbody tr"));
 
     /**
-     *  Sorts the rows by product name.
+     * Sorts the rows by product name.
      */
     rows.sort((rowA, rowB) => {
         const nameA = rowA.cells[0].textContent.trim().toLowerCase();
@@ -110,10 +106,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     /**
-     * 
-     * @param {*} title 
-     * @param {*} description 
-     * @param {*} price 
+     * Add the item to the cart.
      */
     function addToCart(title, description, price) {
         /**
@@ -170,6 +163,7 @@ function displayCartItems() {
             <td>${item.description}</td>
             <td>${item.price}</td>
             <td><button onclick="deleteItem(${index})">Delete</button></td>
+            <td><button class="btn btn-success pay-now" data-index="${index}">Pay Now</button></td>
         `;
         tableBody.appendChild(row);
         totalPrice += price;
@@ -192,10 +186,61 @@ function displayCartItems() {
         tableBody.innerHTML = `<tr><td colspan="4">Your cart is empty</td></tr>`;
         totalPrice = 0;
     }
+
+    /**
+     * Add event listeners to "Pay Now" buttons.
+     */
+    const payNowButtons = document.querySelectorAll(".pay-now");
+    payNowButtons.forEach((button) => {
+        button.addEventListener("click", (event) => {
+            const index = event.target.dataset.index;
+            openPaymentForm(index);
+        });
+    });
 }
 
 /**
- * @param { Function to delete an item from the cart} index 
+ * Function to open the payment form.
+ */
+function openPaymentForm(index) {
+    const cart = JSON.parse(localStorage.getItem("cartItems")) || [];
+    const item = cart[index];
+
+    if (!item) {
+        alert("Item not found in cart.");
+        return;
+    }
+
+    // Display the payment form
+    const paymentFormContainer = document.getElementById("paymentFormContainer");
+    paymentFormContainer.style.display = "block";
+
+    // Optionally, pre-fill any information
+    console.log(`Preparing payment for: ${item.title}, Rs. ${item.price}`);
+}
+
+/**
+ * Handle payment form submission.
+ */
+const paymentForm = document.getElementById("paymentForm");
+paymentForm.addEventListener("submit", (event) => {
+    event.preventDefault();
+
+    // Hide the payment form after submission
+    const paymentFormContainer = document.getElementById("paymentFormContainer");
+    paymentFormContainer.style.display = "none";
+
+    // Show a confirmation alert
+    alert("Payment submitted successfully!");
+
+    // Clear the form
+    paymentForm.reset();
+});
+
+displayCartItems();
+
+/**
+ * Function to delete an item from the cart
  */
 function deleteItem(index) {
     /**
@@ -215,6 +260,9 @@ function deleteItem(index) {
     displayCartItems();
 }
 
+/**
+ * Function to clear the cart.
+ */
 function clearCart() {
     localStorage.removeItem("cartItems");
     displayCartItems();
@@ -226,7 +274,7 @@ function clearCart() {
  */
 document.addEventListener("DOMContentLoaded", () => {
     const clearCartButton = document.getElementById("clearCartButton");
-    clearCartButton?.addEventListener("click", clearCart); n
+    clearCartButton?.addEventListener("click", clearCart);
 });
 
 document.addEventListener("DOMContentLoaded", displayCartItems);

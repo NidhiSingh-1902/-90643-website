@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Add to Cart</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
     <h1>Your Cart</h1>
@@ -13,7 +13,6 @@
     <table id="cartTable" border="1">
         <thead>
             <tr>
-                <!-- Added sort button to Product Name header -->
                 <th id="sortProductName" style="cursor: pointer;">Product Name</th>
                 <th>Description</th>
                 <th>Price</th>
@@ -21,12 +20,31 @@
             </tr>
         </thead>
         <tbody>
-            <!-- Rows will be dynamically added here -->
+            <!-- Rows will be dynamically added here with the "Pay Now" button -->
         </tbody>
     </table>
 
-    <div id="totalPriceContainer">
-        <h3>Total Price: <span id="totalPrice">Rs. 0</span></h3>
+    <!-- Payment Form (hidden by default) -->
+    <div id="paymentFormContainer" style="display: none;">
+        <h2>Payment Details</h2>
+        <form id="paymentForm">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required><br><br>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required><br><br>
+
+            <label for="cardNumber">Card Number:</label>
+            <input type="text" id="cardNumber" name="cardNumber" required><br><br>
+
+            <label for="expiryDate">Expiry Date:</label>
+            <input type="month" id="expiryDate" name="expiryDate" required><br><br>
+
+            <label for="cvv">CVV:</label>
+            <input type="text" id="cvv" name="cvv" required><br><br>
+
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
     </div>
 
     <footer class="footer">
@@ -72,8 +90,5 @@
     </footer>
     
     <script src="script.js"></script>
-
 </body>
-
-
 </html>
