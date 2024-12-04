@@ -35,28 +35,6 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 /**
- * Adds sorting functionality for the product names.
- */
-document.getElementById("sortProductName")?.addEventListener("click", () => {
-    const table = document.getElementById("cartTable");
-    const rows = Array.from(table.querySelectorAll("tbody tr"));
-
-    /**
-     * Sorts the rows by product name.
-     */
-    rows.sort((rowA, rowB) => {
-        const nameA = rowA.cells[0].textContent.trim().toLowerCase();
-        const nameB = rowB.cells[0].textContent.trim().toLowerCase();
-        return nameA.localeCompare(nameB);
-    });
-
-    /**
-     * Append sorted rows back to the table.
-     */
-    rows.forEach(row => table.querySelector("tbody").appendChild(row));
-});
-
-/**
  * Adding Carousel.
  */
 let currentSlide = 0;
@@ -84,6 +62,30 @@ function startCarousel() {
  */
 showSlide(currentSlide);
 startCarousel();
+
+/**
+ * Adds sorting functionality for the product names.
+ */
+document.getElementById("sortProductName")?.addEventListener("click", () => {
+    const table = document.getElementById("cartTable");
+    const rows = Array.from(table.querySelectorAll("tbody tr"));
+
+    /**
+     * Sorts the rows by product name.
+     */
+    rows.sort((rowA, rowB) => {
+        const nameA = rowA.cells[0].textContent.trim().toLowerCase();
+        const nameB = rowB.cells[0].textContent.trim().toLowerCase();
+        return nameA.localeCompare(nameB);
+    });
+
+    /**
+     * Append sorted rows back to the table.
+     */
+    rows.forEach(row => table.querySelector("tbody").appendChild(row));
+});
+
+
 
 document.addEventListener("DOMContentLoaded", () => {
     /**
